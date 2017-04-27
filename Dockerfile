@@ -44,9 +44,6 @@ RUN mkdir /tmp/build && \
     cmake -G "Unix Makefiles" -DLLVM_ENABLE_RTTI=ON ../llvm && \
     make -j 8 install
 
-RUN rm -rf /tmp/llvm
-RUN rm -rf /tmp/build
-
 RUN cd /tmp/ && \
     wget http://www.codesynthesis.com/download/odb/2.4/libodb-2.4.0.tar.gz && \
     tar -xvf libodb-2.4.0.tar.gz
@@ -69,5 +66,9 @@ RUN cd /tmp/ && \
     cd odb-2.4.0 && \
     ./configure && \
     make install
+
+RUN rm -rf /tmp/thrift*
+RUN rm -rf /tmp/libodb-pgsql-2.4.0* /tmp/libodb-2.4.0* /tmp/odb-2.4.0*
+RUN rm -rf /tmp/llvm /tmp/build /tmp/*.tar.xz
 
 RUN apt-get install --yes npm
