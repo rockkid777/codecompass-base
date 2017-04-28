@@ -1,6 +1,5 @@
 FROM ubuntu:16.04
 
-ENV DEBIAN_FRONTEND noninteractive
 ENV REQUIRES_RTTI 1
 ENV JAVA_TOOL_OPTIONS -Dfile.encoding=UTF8
 
